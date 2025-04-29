@@ -28,7 +28,7 @@ const Projects: React.FC = () => {
       date: "Jan 2025",
       description: "Local search engine using Next.js + FastAPI + OLLAMA + PostgreSQL.",
       techStack: ["Next.js", "Python", "Tailwind CSS", "Docker", "OpenAI API"],
-      image: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       liveLink: "#",
       category: "fullstack"
@@ -37,9 +37,9 @@ const Projects: React.FC = () => {
       id: 2,
       title: "Athena E-Learning",
       date: "Oct 2024",
-      description: "E-learning platform with Laravel, Vue.js, and Stripe integration for course payments.",
+      description: "E-learning platform with Laravel, Vue.js, and Stripe integration.",
       techStack: ["Laravel", "Vue.js", "MySQL", "Stripe API", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/5428012/pexels-photo-5428012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/5428012/pexels-photo-5428012.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       liveLink: "#",
       category: "frontend"
@@ -48,9 +48,9 @@ const Projects: React.FC = () => {
       id: 3,
       title: "Ecom Dashboard",
       date: "May 2024",
-      description: "Admin dashboard for e-commerce with real-time analytics and order management.",
+      description: "Admin dashboard for e-commerce with real-time analytics.",
       techStack: ["React", "Node.js", "Express", "MongoDB", "Chart.js"],
-      image: "https://images.pexels.com/photos/6956183/pexels-photo-6956183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/6956183/pexels-photo-6956183.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       category: "backend"
     },
@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
       date: "Feb 2024",
       description: "Collaborative document editor with real-time syncing and markdown support.",
       techStack: ["Next.js", "TypeScript", "Firebase", "Slate.js", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/8439094/pexels-photo-8439094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/8439094/pexels-photo-8439094.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       liveLink: "#",
       category: "fullstack"
@@ -69,9 +69,9 @@ const Projects: React.FC = () => {
       id: 5,
       title: "Weather Dashboard",
       date: "Dec 2023",
-      description: "Real-time weather tracking app with location detection and 7-day forecasts.",
+      description: "Real-time weather app with geolocation and forecasts.",
       techStack: ["React", "OpenWeather API", "Geolocation API", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       liveLink: "#",
       category: "frontend"
@@ -80,16 +80,16 @@ const Projects: React.FC = () => {
       id: 6,
       title: "Authentication API",
       date: "Aug 2023",
-      description: "Secure authentication API with JWT, OAuth, and role-based access control.",
+      description: "Secure auth API with JWT, OAuth, and role-based access control.",
       techStack: ["Node.js", "Express", "MongoDB", "JWT", "OAuth2"],
-      image: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      image: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       category: "backend"
     }
   ];
 
-  const filteredProjects = filter === 'all' 
-    ? projects 
+  const filteredProjects = filter === 'all'
+    ? projects
     : projects.filter(project => project.category === filter);
 
   const categories = [
@@ -103,7 +103,7 @@ const Projects: React.FC = () => {
     <section 
       id="projects" 
       ref={ref}
-      className="py-20 px-6 bg-slate-900 text-slate-100"
+      className="py-20 px-6 bg-black text-slate-100"
     >
       <div className="max-w-6xl mx-auto">
         <div className={`text-center mb-12 transition-all duration-700 ${
@@ -114,7 +114,7 @@ const Projects: React.FC = () => {
             A collection of my recent work that showcases my skills and expertise
           </p>
         </div>
-        
+
         <div className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-700 ${
           inView ? 'opacity-100' : 'opacity-0 translate-y-10'
         }`}>
@@ -132,21 +132,29 @@ const Projects: React.FC = () => {
             </button>
           ))}
         </div>
-        
+
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
-            <div 
+            <div
               key={project.id}
-              className={`bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] transition-all duration-700 ${
+              className={`overflow-hidden transition-all duration-700 ${
                 inView ? 'opacity-100' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{
+                transitionDelay: `${index * 100}ms`,
+                background: 'rgba(255, 255, 255, 0.05)',
+                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                backdropFilter: 'blur(6.5px)',
+                WebkitBackdropFilter: 'blur(6.5px)',
+                borderRadius: '10px',
+                border: '1px solid rgba(255, 255, 255, 0.18)'
+              }}
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden rounded-t-xl">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6">

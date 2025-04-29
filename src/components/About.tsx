@@ -18,11 +18,11 @@ const About: React.FC = () => {
           inView ? 'opacity-100' : 'opacity-0 translate-y-10'
         }`}>
           <div className="w-full lg:w-auto relative flex-shrink-0">
-            <div className="relative z-10 w-[500px] h-[500px]">
+            <div className="relative z-10 w-[350px] sm:w-[450px] md:w-[500px] lg:w-[600px] aspect-square">
               <img 
                 src="/assets/image/about-me.png" 
                 alt="Saroj Sharma" 
-                className="rounded-2xl shadow-2xl w-3 h-3"
+                className="rounded-2xl shadow-2xl w-full h-full object-cover"
               />
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-sky-400 rounded-2xl -z-10"></div>

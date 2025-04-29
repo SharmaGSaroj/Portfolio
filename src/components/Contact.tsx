@@ -8,10 +8,10 @@ const Contact: React.FC = () => {
     email: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -25,14 +25,13 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitMessage('Thank you for your message! I\'ll get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
-      
-      // Clear success message after 5 seconds
+
       setTimeout(() => {
         setSubmitMessage('');
       }, 5000);
@@ -43,7 +42,7 @@ const Contact: React.FC = () => {
     <section 
       id="contact" 
       ref={ref}
-      className="py-20 px-6 bg-slate-900 text-slate-100"
+      className="py-20 px-6 bg-black text-white"
     >
       <div className="max-w-6xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-700 ${
@@ -54,14 +53,25 @@ const Contact: React.FC = () => {
             Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
           </p>
         </div>
-        
+
         <div className="flex flex-col lg:flex-row gap-10">
+          {/* Left Side Contact Information */}
           <div className={`lg:w-2/5 transition-all duration-700 ${
             inView ? 'opacity-100' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-slate-800 p-8 rounded-xl shadow-lg">
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                backdropFilter: 'blur(6.5px)',
+                WebkitBackdropFilter: 'blur(6.5px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                padding: '2rem'
+              }}
+            >
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
@@ -74,7 +84,7 @@ const Contact: React.FC = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
                     <Phone className="text-sky-400" size={20} />
@@ -86,7 +96,7 @@ const Contact: React.FC = () => {
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
                     <MapPin className="text-sky-400" size={20} />
@@ -99,7 +109,7 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-10">
                 <h4 className="text-lg font-medium mb-4">Connect With Me</h4>
                 <div className="flex gap-4">
@@ -125,19 +135,30 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
+          {/* Right Side Contact Form */}
           <div className={`lg:w-3/5 transition-all duration-700 ${
             inView ? 'opacity-100' : 'opacity-0 translate-y-10'
           }`} style={{ transitionDelay: '100ms' }}>
-            <div className="bg-slate-800 p-8 rounded-xl shadow-lg">
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                backdropFilter: 'blur(6.5px)',
+                WebkitBackdropFilter: 'blur(6.5px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                padding: '2rem'
+              }}
+            >
               <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
-              
+
               {submitMessage && (
                 <div className="bg-green-400/20 text-green-400 p-4 rounded-lg mb-6">
                   {submitMessage}
                 </div>
               )}
-              
+
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -154,7 +175,7 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Your Email
@@ -170,7 +191,7 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
@@ -186,7 +207,7 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
