@@ -12,7 +12,7 @@ const Education: React.FC = () => {
     <section 
       id="education" 
       ref={ref}
-      className="py-20 px-6 bg-slate-800 text-slate-100"
+      className="py-20 px-6 bg-black text-slate-100"
     >
       <div className="max-w-4xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-700 ${
@@ -23,10 +23,23 @@ const Education: React.FC = () => {
             My academic background and learning journey
           </p>
         </div>
-        
-        <div className={`bg-slate-700/50 rounded-2xl p-8 shadow-lg transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`}>
+
+        {/* Diploma Card */}
+        <div 
+          className={`transition-all duration-700 ${
+            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+            backdropFilter: 'blur(6.5px)',
+            WebkitBackdropFilter: 'blur(6.5px)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            padding: '2rem',
+            marginBottom: '2.5rem'
+          }}
+        >
           <div className="flex items-start gap-5">
             <div className="bg-sky-400/20 p-3 rounded-full">
               <GraduationCap className="text-sky-400" size={36} />
@@ -34,12 +47,11 @@ const Education: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold mb-1">Diploma in Interactive Media Design</h3>
               <p className="text-sky-400 text-lg mb-4">Fanshawe College, London, ON</p>
-              
               <div className="flex items-center gap-2 text-slate-300 mb-2">
                 <Calendar size={18} />
                 <span>April 2023</span>
               </div>
-              
+
               <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-2">
                   <Award className="text-yellow-400 mt-1" size={18} />
@@ -47,7 +59,7 @@ const Education: React.FC = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <BookOpen className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Built full-stack web applications with Lumen and Vue.js in real-world project teams</p>
+                  <p className="text-slate-200">Built full-stack web applications with Lumen and Vue.js in real-world teams</p>
                 </div>
                 <div className="flex items-start gap-2">
                   <BookOpen className="text-yellow-400 mt-1" size={18} />
@@ -57,10 +69,23 @@ const Education: React.FC = () => {
             </div>
           </div>
         </div>
-        
-        <div className={`mt-10 bg-slate-700/50 rounded-2xl p-8 shadow-lg transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '100ms' }}>
+
+        {/* Certifications Card */}
+        <div 
+          className={`transition-all duration-700 ${
+            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+            backdropFilter: 'blur(6.5px)',
+            WebkitBackdropFilter: 'blur(6.5px)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            padding: '2rem',
+            transitionDelay: '100ms'
+          }}
+        >
           <div className="flex items-start gap-5">
             <div className="bg-sky-400/20 p-3 rounded-full">
               <Award className="text-sky-400" size={36} />
@@ -93,6 +118,7 @@ const Education: React.FC = () => {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
