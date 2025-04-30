@@ -54,7 +54,6 @@ const Projects: React.FC = () => {
       category: "fullstack"
     },
     {
-      id: 4,
       title: "ChatApp (Real-Time Messaging)",
       date: "Feb 2023",
       description: "Real-time chat app with Vue.js frontend, Node/Express backend, and Socket.io for instant messaging.",
