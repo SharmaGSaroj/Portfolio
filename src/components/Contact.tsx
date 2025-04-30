@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(import.meta.env.VITE_FORM_SUBMISSION_URL, {
+      const response = await fetch(import.meta.env.FORM_SUBMISSION_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
