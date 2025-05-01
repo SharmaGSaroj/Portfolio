@@ -27,9 +27,10 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
   const navLinks = [
     { name: 'Home', to: 'hero' },
     { name: 'About', to: 'about' },
+    { name: 'Experience', to: 'experience' },
     { name: 'Skills', to: 'skills' },
     { name: 'Projects', to: 'projects' },
-    { name: 'Education', to: 'education' },
+    
     { name: 'Contact', to: 'contact' },
   ];
 

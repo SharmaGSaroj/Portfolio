@@ -39,9 +39,6 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="text-sm text-center md:text-right">
-            <p className="flex items-center justify-center md:justify-end gap-1">
-              Built with <Heart size={14} className="text-red-500" /> using React & Tailwind
-            </p>
             <p>© {currentYear} Saroj Sharma G. All rights reserved.</p>
           </div>
         </div>
