@@ -48,7 +48,8 @@ const Hero: React.FC = () => {
             Get In Touch
           </a>
           <a
-            href="/resume.pdf" // Add your actual resume link here
+            href="/resume.pdf"
+            download
             className="group flex items-center gap-2 border-2 border-slate-700 hover:border-purple-500 text-slate-300 hover:text-purple-400 px-6 py-3 rounded-full text-lg font-medium transition-all"
           >
             <FileText className="w-5 h-5" />
