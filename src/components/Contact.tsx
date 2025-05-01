@@ -2,6 +2,17 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
+import { motion } from 'framer-motion';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
+
+const fadeInDown = {
+  hidden: { opacity: 0, y: -30 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Contact: React.FC = () => {
   const { ref, inView } = useInView({
@@ -18,20 +29,28 @@ const Contact: React.FC = () => {
       className="py-20 px-6 bg-black text-white"
     >
       <div className="max-w-6xl mx-auto">
-        <div className={`text-center mb-16 transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`}>
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
           </p>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          {/* Left Side Contact Info */}
-          <div className={`lg:w-2/5 transition-all duration-700 ${
-            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-          }`}>
+          {/* Contact Info */}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate={inView ? 'show' : 'hidden'}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:w-2/5"
+          >
             <div
               style={{
                 background: 'rgba(255, 255, 255, 0.05)',
@@ -44,7 +63,6 @@ const Contact: React.FC = () => {
               }}
             >
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
@@ -57,7 +75,6 @@ const Contact: React.FC = () => {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
                     <Phone className="text-sky-400" size={20} />
@@ -69,7 +86,6 @@ const Contact: React.FC = () => {
                     </a>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <div className="bg-sky-400/20 p-3 rounded-full">
                     <MapPin className="text-sky-400" size={20} />
@@ -105,12 +121,16 @@ const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Side Contact Form */}
-          <div className={`lg:w-3/5 transition-all duration-700 ${
-            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-          }`} style={{ transitionDelay: '100ms' }}>
+          {/* Contact Form */}
+          <motion.div
+            variants={fadeInDown}
+            initial="hidden"
+            animate={inView ? 'show' : 'hidden'}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:w-3/5"
+          >
             <div
               style={{
                 background: 'rgba(255, 255, 255, 0.05)',
@@ -144,7 +164,6 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Your Email
@@ -159,7 +178,6 @@ const Contact: React.FC = () => {
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
@@ -174,7 +192,6 @@ const Contact: React.FC = () => {
                   />
                   <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
-
                 <button
                   type="submit"
                   disabled={state.submitting}
@@ -189,7 +206,7 @@ const Contact: React.FC = () => {
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
