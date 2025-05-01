@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { GraduationCap, Calendar, Award, BookOpen } from 'lucide-react';
+import { Briefcase, Calendar, Code, Layers } from 'lucide-react';
 
 const Education: React.FC = () => {
   const { ref, inView } = useInView({
@@ -10,7 +10,7 @@ const Education: React.FC = () => {
 
   return (
     <section 
-      id="education" 
+      id="experience" 
       ref={ref}
       className="py-20 px-6 bg-black text-slate-100"
     >
@@ -18,13 +18,13 @@ const Education: React.FC = () => {
         <div className={`text-center mb-16 transition-all duration-700 ${
           inView ? 'opacity-100' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="text-4xl font-bold mb-4">Education</h2>
+          <h2 className="text-4xl font-bold mb-4">Work Experience</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            My academic background and learning journey
+            My professional journey and impactful contributions
           </p>
         </div>
 
-        {/* Diploma Card */}
+        {/* Experience - EventConnect */}
         <div 
           className={`transition-all duration-700 ${
             inView ? 'opacity-100' : 'opacity-0 translate-y-10'
@@ -42,35 +42,34 @@ const Education: React.FC = () => {
         >
           <div className="flex items-start gap-5">
             <div className="bg-sky-400/20 p-3 rounded-full">
-              <GraduationCap className="text-sky-400" size={36} />
+              <Briefcase className="text-sky-400" size={36} />
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-1">Diploma in Interactive Media Design</h3>
-              <p className="text-sky-400 text-lg mb-4">Fanshawe College, London, ON</p>
+              <h3 className="text-2xl font-bold mb-1">Software Developer</h3>
+              <p className="text-sky-400 text-lg mb-4">EventConnect Inc., London, ON</p>
               <div className="flex items-center gap-2 text-slate-300 mb-2">
                 <Calendar size={18} />
-                <span>April 2023</span>
+                <span>June 2023 – October 2024</span>
               </div>
-
               <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-2">
-                  <Award className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Graduated with honors and distinction</p>
+                  <Code className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">Built and optimized event management applications using Vue.js, Laravel, and PostgreSQL.</p>
                 </div>
                 <div className="flex items-start gap-2">
-                  <BookOpen className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Built full-stack web applications with Lumen and Vue.js in real-world teams</p>
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">Improved performance and reliability by 30%, and reduced system downtime by 20% through debugging and optimization.</p>
                 </div>
                 <div className="flex items-start gap-2">
-                  <BookOpen className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Key courses: Web Development, UI/UX Design, Database Management, Mobile App Development</p>
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">Led code reviews, integrated MongoDB/MySQL, and created technical documentation for APIs and dev workflows.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Certifications Card */}
+        {/* Experience - Xtreminds */}
         <div 
           className={`transition-all duration-700 ${
             inView ? 'opacity-100' : 'opacity-0 translate-y-10'
@@ -82,37 +81,28 @@ const Education: React.FC = () => {
             WebkitBackdropFilter: 'blur(6.5px)',
             borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.18)',
-            padding: '2rem',
-            transitionDelay: '100ms'
+            padding: '2rem'
           }}
         >
           <div className="flex items-start gap-5">
             <div className="bg-sky-400/20 p-3 rounded-full">
-              <Award className="text-sky-400" size={36} />
+              <Briefcase className="text-sky-400" size={36} />
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-1">Certifications</h3>
-              <div className="mt-4 space-y-4">
+              <h3 className="text-2xl font-bold mb-1">WordPress Developer</h3>
+              <p className="text-sky-400 text-lg mb-4">Xtreminds IT Solution</p>
+              <div className="flex items-center gap-2 text-slate-300 mb-2">
+                <Calendar size={18} />
+                <span>Feb 2017 – Jan 2021</span>
+              </div>
+              <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-2">
-                  <Award className="text-yellow-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-slate-100 font-medium">Laravel Certified Developer</p>
-                    <p className="text-slate-300 text-sm">Laravel, 2023</p>
-                  </div>
+                  <Code className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">Developed and optimized WordPress themes, plugins, and custom features using PHP and JS.</p>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Award className="text-yellow-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-slate-100 font-medium">AWS Certified Cloud Practitioner</p>
-                    <p className="text-slate-300 text-sm">Amazon Web Services, 2022</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Award className="text-yellow-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-slate-100 font-medium">Full Stack Web Development</p>
-                    <p className="text-slate-300 text-sm">Udemy, 2021</p>
-                  </div>
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">Performed seamless site migrations with minimal downtime and optimized queries for performance gains.</p>
                 </div>
               </div>
             </div>

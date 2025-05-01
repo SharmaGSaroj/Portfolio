@@ -21,7 +21,7 @@ const About: React.FC = () => {
             <div className="relative z-10 w-[350px] sm:w-[450px] md:w-[500px] lg:w-[600px] aspect-square">
               <img 
                 src="/assets/image/about-me.png" 
-                alt="Saroj Sharma" 
+                alt="Saroj Sharma G" 
                 className="rounded-2xl shadow-2xl w-full h-full object-cover"
               />
               {/* Decorative elements */}

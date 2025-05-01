@@ -1,77 +1,126 @@
 import React from 'react';
-import { useInView } from 'react-intersection-observer';
 import { Mail, FileText } from 'lucide-react';
+import { Link } from 'react-scroll';
+import { Typewriter } from 'react-simple-typewriter';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   return (
-    <section 
-      id="hero" 
-      ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center px-6 bg-[#0f172a] text-slate-100 font-['Space_Grotesk']"
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 bg-[#0f172a] text-slate-100 font-['Space_Grotesk'] overflow-hidden"
     >
-      <div className={`max-w-4xl transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        {/* Avatar placeholder - Replace with your actual Memoji or avatar */}
-        <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-sky-400 to-purple-600 p-1">
-          <div className="w-full h-full rounded-full bg-[#0f172a] flex items-center justify-center text-4xl">
-            👨‍💻
-          </div>
+      {/* Left Typewriter Background (Animated, Mid-Height) */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 0.4, x: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute top-1/3 left-6 w-fit max-w-[45vw] z-0 pointer-events-none"
+      >
+        <div className="text-green-400 text-sm md:text-base lg:text-lg font-mono leading-relaxed">
+          <Typewriter
+            words={[
+              'npm run dev',
+              'composer install && php artisan serve',
+              'echo "Serving Laravel backend..."',
+              'yarn build && npm start',
+              'vue create your-idea',
+            ]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={40}
+            deleteSpeed={20}
+            delaySpeed={1800}
+          />
         </div>
+      </motion.div>
 
-        {/* Main headline with gradient text */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-          I build web apps
-          <br />
-          and care deeply about{' '}
-          <span className="inline-block bg-gradient-to-r from-yellow-400 to-purple-500 text-transparent bg-clip-text">
-            clean code!
+      {/* Right Typewriter Background (Animated, Mid-Height) */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 0.4, x: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute top-1/2 right-6 w-fit max-w-[45vw] text-right z-0 pointer-events-none"
+      >
+        <div className="text-green-400 text-sm md:text-base lg:text-lg font-mono leading-relaxed">
+          <Typewriter
+            words={[
+              'Code. Create. Launch. 🚀',
+              'Think in systems, build with empathy.',
+              'Debugging is like being a detective...',
+              '"First, solve the problem. Then, write the code."',
+              'Every line matters. 💡',
+            ]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={40}
+            deleteSpeed={20}
+            delaySpeed={2000}
+          />
+        </div>
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="max-w-4xl text-center z-10">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight"
+        >
+          <span className="animate-pulse text-white drop-shadow-md">Hi, I'm</span>{' '}
+          <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 bg-clip-text animate-glow">
+            Saroj Sharma G
           </span>
-        </h1>
+          <br />
+          <span className="bg-gradient-to-r from-yellow-400 to-purple-500 text-transparent bg-clip-text animate-glow">
+            Full-Stack Developer
+          </span>
+        </motion.h1>
 
-        {/* Bio text */}
-        <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-          I'm Saroj Sharma G, a full-stack software developer with 3+ years of experience 
-          in Laravel and Vue.js. Passionate about writing secure, scalable, and beautiful code.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto"
+        >
+          I specialize in building secure, scalable, and beautiful web applications using Laravel, Vue.js, and modern stacks. Let's bring your ideas to life!
+        </motion.p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
+        >
           <a
             href="mailto:sarojsharma5462@gmail.com"
-            className="group flex items-center gap-2 bg-gradient-to-r from-sky-400 to-purple-500 text-white px-6 py-3 rounded-full text-lg font-medium transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+            className="group flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full text-lg font-semibold transition-all hover:scale-105 hover:shadow-xl hover:shadow-pink-500/30"
           >
             <Mail className="w-5 h-5" />
-            Get In Touch
+            Let's Connect
           </a>
           <a
-            href="/resume.pdf" // Add your actual resume link here
-            className="group flex items-center gap-2 border-2 border-slate-700 hover:border-purple-500 text-slate-300 hover:text-purple-400 px-6 py-3 rounded-full text-lg font-medium transition-all"
+            href="/resume.pdf"
+            download
+            className="group flex items-center gap-2 border-2 border-slate-700 hover:border-purple-500 text-slate-300 hover:text-purple-400 px-6 py-3 rounded-full text-lg font-medium transition-all hover:scale-105 hover:shadow-md"
           >
             <FileText className="w-5 h-5" />
             Download Resume
           </a>
-        </div>
+        </motion.div>
 
-        {/* Scroll indicator */}
-        <div className="animate-bounce mt-12 text-slate-500">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </div>
+        <Link
+          to="about"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          className="cursor-pointer animate-bounce mt-12 text-slate-500 hover:text-sky-400 transition"
+        >
+          ↓
+        </Link>
       </div>
     </section>
   );

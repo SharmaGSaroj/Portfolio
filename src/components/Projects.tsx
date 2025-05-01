@@ -11,7 +11,7 @@ type Project = {
   image: string;
   liveLink?: string;
   codeLink?: string;
-  category: string;
+  category: string[]; // changed from string to string[]
 };
 
 const Projects: React.FC = () => {
@@ -29,9 +29,8 @@ const Projects: React.FC = () => {
       description: "Built a search engine using Next.js (frontend), FastAPI (backend), and OLLAMA for deep search with RAG integration.",
       techStack: ["Next.js", "Python", "OLLAMA", "PostgreSQL", "Tailwind CSS", "Docker", "OpenAI API"],
       image: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      liveLink: "#",
-      category: "fullstack"
+      codeLink: "https://github.com/SharmaGSaroj/Personal-AI",
+      category: ["fullstack"]
     },
     {
       id: 2,
@@ -40,8 +39,8 @@ const Projects: React.FC = () => {
       description: "Created a forum app to combat cyberbullying in Canadian basketball using Vue.js, Lumen API, and JWT-based auth.",
       techStack: ["Vue.js", "PHP Lumen", "MySQL", "SASS", "Bootstrap", "JWT"],
       image: "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      category: "frontend"
+      codeLink: "https://github.com/SharmaGSaroj/Cyberbullyin-in-basketball",
+      category: ["frontend", "backend"]
     },
     {
       id: 3,
@@ -50,8 +49,8 @@ const Projects: React.FC = () => {
       description: "Entertainment Roku app for classic content using Vue.js, Firebase Auth, and IMDB API integration.",
       techStack: ["Vue.js", "PHP Lumen", "MySQL", "IMDB API", "Bootstrap", "Firebase"],
       image: "https://images.pexels.com/photos/8466717/pexels-photo-8466717.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      category: "fullstack"
+      codeLink: "https://github.com/SharmaGSaroj/SharmaG_Saroj-Bhavya_Thakkar-Rokufullbuild",
+      category: ["fullstack"]
     },
     {
       id: 4,
@@ -60,14 +59,14 @@ const Projects: React.FC = () => {
       description: "Real-time chat app with Vue.js frontend, Node/Express backend, and Socket.io for instant messaging.",
       techStack: ["Vue.js", "Node.js", "Express.js", "Socket.io", "Tailwind CSS"],
       image: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      category: "backend"
+      codeLink: "https://github.com/SharmaGSaroj/SharmaG_S_Chatapp",
+      category: ["backend"]
     }
   ];
 
   const filteredProjects = filter === 'all'
     ? projects
-    : projects.filter(project => project.category === filter);
+    : projects.filter(project => project.category.includes(filter));
 
   const categories = [
     { id: 'all', name: 'All Projects' },

@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
                 padding: '2rem'
               }}
             >
-              <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+              <h3 className="text-2xl font-bold mb-6">Let's Chat</h3>
 
               {state.succeeded && (
                 <div className="bg-green-400/20 text-green-400 p-4 rounded-lg mb-6">

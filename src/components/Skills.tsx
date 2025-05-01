@@ -47,8 +47,6 @@ const Skills: React.FC = () => {
       className="py-20 px-6 bg-[#0A0B14] overflow-hidden relative"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0B14] via-[#12141F] to-[#0A0B14] z-0" />
-
-      {/* Optional background grid */}
       <div className="absolute inset-0 opacity-5 z-0 pointer-events-none">
         <div className="w-full h-full bg-grid-pattern" />
       </div>
@@ -61,19 +59,23 @@ const Skills: React.FC = () => {
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {skills.map((skill, index) => (
-              <div key={index} className="honeycomb-cell">
+              <div key={index} className="honeycomb-cell group">
                 <div
                   className="honeycomb-content bg-[#151823] hover:bg-[#1A1E2A]
-                             flex items-center justify-center group relative
+                             flex items-center justify-center relative
                              shadow-lg shadow-black/50"
-                  title={skill.name}
                 >
                   <div
-                    className="text-3xl transition-all duration-300 group-hover:scale-110"
+                    className="text-3xl transition-all duration-300 group-hover:opacity-0"
                     style={{ color: skill.color }}
                   >
                     {skill.icon}
                   </div>
+                  <span
+                    className="absolute text-sm font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    {skill.name}
+                  </span>
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 honeycomb-glow"
                     style={{
@@ -87,7 +89,6 @@ const Skills: React.FC = () => {
         </div>
       </div>
 
-      {/* CSS styles */}
       <style>
         {`
           .honeycomb {
