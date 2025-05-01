@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
 type Project = {
@@ -11,7 +12,18 @@ type Project = {
   image: string;
   liveLink?: string;
   codeLink?: string;
-  category: string[]; // changed from string to string[]
+  category: string[];
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+    },
+  }),
 };
 
 const Projects: React.FC = () => {
@@ -76,48 +88,54 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section 
-      id="projects" 
-      ref={ref}
-      className="py-20 px-6 bg-black text-slate-100"
-    >
+    <section id="projects" ref={ref} className="py-20 px-6 bg-black text-slate-100">
       <div className="max-w-6xl mx-auto">
-        <div className={`text-center mb-12 transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`}>
+        {/* Header */}
+        <motion.div
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          variants={fadeInUp}
+          className="text-center mb-12"
+        >
           <h2 className="text-4xl font-bold mb-4">Projects</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             A collection of my real-world work that showcases my development skills and impact.
           </p>
-        </div>
+        </motion.div>
 
-        <div className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`}>
-          {categories.map(category => (
+        {/* Filter Buttons */}
+        <motion.div
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          variants={fadeInUp}
+          className="flex flex-wrap justify-center gap-4 mb-8"
+        >
+          {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setFilter(category.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                filter === category.id 
-                  ? 'bg-sky-400 text-slate-900' 
+                filter === category.id
+                  ? 'bg-sky-400 text-slate-900'
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
               }`}
             >
               {category.name}
             </button>
           ))}
-        </div>
+        </motion.div>
 
+        {/* Projects Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
-            <div
+          {filteredProjects.map((project, i) => (
+            <motion.div
               key={project.id}
-              className={`overflow-hidden transition-all duration-700 ${
-                inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-              }`}
+              variants={fadeInUp}
+              initial="hidden"
+              animate={inView ? 'show' : 'hidden'}
+              custom={i}
+              className="overflow-hidden"
               style={{
-                transitionDelay: `${index * 100}ms`,
                 background: 'rgba(255, 255, 255, 0.05)',
                 boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                 backdropFilter: 'blur(6.5px)',
@@ -127,9 +145,9 @@ const Projects: React.FC = () => {
               }}
             >
               <div className="h-48 overflow-hidden rounded-t-xl">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -142,8 +160,8 @@ const Projects: React.FC = () => {
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
-                      <span 
-                        key={tech} 
+                      <span
+                        key={tech}
                         className="text-xs bg-slate-700 text-sky-400 px-2 py-1 rounded-full"
                       >
                         {tech}
@@ -153,9 +171,9 @@ const Projects: React.FC = () => {
                 </div>
                 <div className="flex gap-3">
                   {project.codeLink && (
-                    <a 
-                      href={project.codeLink} 
-                      target="_blank" 
+                    <a
+                      href={project.codeLink}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-slate-300 hover:text-sky-400 transition-colors"
                     >
@@ -164,9 +182,9 @@ const Projects: React.FC = () => {
                     </a>
                   )}
                   {project.liveLink && (
-                    <a 
-                      href={project.liveLink} 
-                      target="_blank" 
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-slate-300 hover:text-sky-400 transition-colors"
                     >
@@ -176,7 +194,7 @@ const Projects: React.FC = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,6 +1,21 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import { Briefcase, Calendar, Code, Layers } from 'lucide-react';
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Education: React.FC = () => {
   const { ref, inView } = useInView({
@@ -9,26 +24,32 @@ const Education: React.FC = () => {
   });
 
   return (
-    <section 
-      id="experience" 
+    <section
+      id="experience"
       ref={ref}
       className="py-20 px-6 bg-black text-slate-100"
     >
-      <div className="max-w-4xl mx-auto">
-        <div className={`text-center mb-16 transition-all duration-700 ${
-          inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-        }`}>
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate={inView ? 'show' : 'hidden'}
+        className="max-w-4xl mx-auto"
+      >
+        {/* Section Header */}
+        <motion.div
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">Work Experience</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             My professional journey and impactful contributions
           </p>
-        </div>
+        </motion.div>
 
-        {/* Experience - EventConnect */}
-        <div 
-          className={`transition-all duration-700 ${
-            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-          }`}
+        {/* EventConnect Experience */}
+        <motion.div
+          variants={fadeInUp}
+          className="transition-all duration-700 mb-10"
           style={{
             background: 'rgba(255, 255, 255, 0.05)',
             boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
@@ -37,7 +58,6 @@ const Education: React.FC = () => {
             borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.18)',
             padding: '2rem',
-            marginBottom: '2.5rem'
           }}
         >
           <div className="flex items-start gap-5">
@@ -54,26 +74,31 @@ const Education: React.FC = () => {
               <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-2">
                   <Code className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Built and optimized event management applications using Vue.js, Laravel, and PostgreSQL.</p>
+                  <p className="text-slate-200">
+                    Built and optimized event management applications using Vue.js, Laravel, and PostgreSQL.
+                  </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Layers className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Improved performance and reliability by 30%, and reduced system downtime by 20% through debugging and optimization.</p>
+                  <p className="text-slate-200">
+                    Improved performance and reliability by 30%, and reduced system downtime by 20% through debugging and optimization.
+                  </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Layers className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Led code reviews, integrated MongoDB/MySQL, and created technical documentation for APIs and dev workflows.</p>
+                  <p className="text-slate-200">
+                    Led code reviews, integrated MongoDB/MySQL, and created technical documentation for APIs and dev workflows.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Experience - Xtreminds */}
-        <div 
-          className={`transition-all duration-700 ${
-            inView ? 'opacity-100' : 'opacity-0 translate-y-10'
-          }`}
+        {/* Xtreminds Experience */}
+        <motion.div
+          variants={fadeInUp}
+          className="transition-all duration-700"
           style={{
             background: 'rgba(255, 255, 255, 0.05)',
             boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
@@ -81,7 +106,7 @@ const Education: React.FC = () => {
             WebkitBackdropFilter: 'blur(6.5px)',
             borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.18)',
-            padding: '2rem'
+            padding: '2rem',
           }}
         >
           <div className="flex items-start gap-5">
@@ -98,18 +123,21 @@ const Education: React.FC = () => {
               <div className="mt-4 space-y-3">
                 <div className="flex items-start gap-2">
                   <Code className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Developed and optimized WordPress themes, plugins, and custom features using PHP and JS.</p>
+                  <p className="text-slate-200">
+                    Developed and optimized WordPress themes, plugins, and custom features using PHP and JS.
+                  </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Layers className="text-yellow-400 mt-1" size={18} />
-                  <p className="text-slate-200">Performed seamless site migrations with minimal downtime and optimized queries for performance gains.</p>
+                  <p className="text-slate-200">
+                    Performed seamless site migrations with minimal downtime and optimized queries for performance gains.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

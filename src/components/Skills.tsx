@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import {
   SiLaravel, SiVuedotjs, SiJavascript, SiPhp, SiMysql,
   SiPostgresql, SiMongodb, SiNextdotjs, SiNodedotjs,
@@ -7,6 +8,21 @@ import {
   SiShopify, SiFirebase, SiGithub, SiDocker, SiPostman,
   SiJira, SiTrello, SiReact, SiTypescript
 } from 'react-icons/si';
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+};
 
 const Skills: React.FC = () => {
   const { ref, inView } = useInView({
@@ -55,11 +71,14 @@ const Skills: React.FC = () => {
         <h2 className="text-5xl font-bold text-white mb-16">Tech Stack</h2>
 
         <div className="w-full max-w-6xl">
-          <div className={`honeycomb transition-all duration-1000 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <motion.div
+            className={`honeycomb`}
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? 'show' : 'hidden'}
+          >
             {skills.map((skill, index) => (
-              <div key={index} className="honeycomb-cell group">
+              <motion.div key={index} variants={itemVariants} className="honeycomb-cell group">
                 <div
                   className="honeycomb-content bg-[#151823] hover:bg-[#1A1E2A]
                              flex items-center justify-center relative
@@ -83,9 +102,9 @@ const Skills: React.FC = () => {
                     }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
