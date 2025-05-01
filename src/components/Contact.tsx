@@ -22,21 +22,34 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you for your message! I\'ll get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch(import.meta.env.FORM_SUBMISSION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
 
-      setTimeout(() => {
-        setSubmitMessage('');
-      }, 5000);
-    }, 1500);
+      if (response.ok) {
+        setSubmitMessage("Thank you for your message! I'll get back to you soon.");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitMessage("Oops! Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      setSubmitMessage("Error sending message. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitMessage(""), 5000);
+    }
   };
+
 
   return (
     <section 

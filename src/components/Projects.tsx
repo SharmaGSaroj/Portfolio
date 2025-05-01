@@ -24,10 +24,10 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Deep Seek",
+      title: "Deep Seek (Local Search Engine)",
       date: "Jan 2025",
-      description: "Local search engine using Next.js + FastAPI + OLLAMA + PostgreSQL.",
-      techStack: ["Next.js", "Python", "Tailwind CSS", "Docker", "OpenAI API"],
+      description: "Built a search engine using Next.js (frontend), FastAPI (backend), and OLLAMA for deep search with RAG integration.",
+      techStack: ["Next.js", "Python", "OLLAMA", "PostgreSQL", "Tailwind CSS", "Docker", "OpenAI API"],
       image: "https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       liveLink: "#",
@@ -35,54 +35,31 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: "Athena E-Learning",
-      date: "Oct 2024",
-      description: "E-learning platform with Laravel, Vue.js, and Stripe integration.",
-      techStack: ["Laravel", "Vue.js", "MySQL", "Stripe API", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/5428012/pexels-photo-5428012.jpeg",
+      title: "Cyber Bullying in Basketball",
+      date: "Mar 2023",
+      description: "Created a forum app to combat cyberbullying in Canadian basketball using Vue.js, Lumen API, and JWT-based auth.",
+      techStack: ["Vue.js", "PHP Lumen", "MySQL", "SASS", "Bootstrap", "JWT"],
+      image: "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
-      liveLink: "#",
       category: "frontend"
     },
     {
       id: 3,
-      title: "Ecom Dashboard",
-      date: "May 2024",
-      description: "Admin dashboard for e-commerce with real-time analytics.",
-      techStack: ["React", "Node.js", "Express", "MongoDB", "Chart.js"],
-      image: "https://images.pexels.com/photos/6956183/pexels-photo-6956183.jpeg",
+      title: "RokuFlash Back Streaming App",
+      date: "Apr 2023",
+      description: "Entertainment Roku app for classic content using Vue.js, Firebase Auth, and IMDB API integration.",
+      techStack: ["Vue.js", "PHP Lumen", "MySQL", "IMDB API", "Bootstrap", "Firebase"],
+      image: "https://images.pexels.com/photos/8466717/pexels-photo-8466717.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
-      category: "backend"
-    },
-    {
-      id: 4,
-      title: "Notion Clone",
-      date: "Feb 2024",
-      description: "Collaborative document editor with real-time syncing and markdown support.",
-      techStack: ["Next.js", "TypeScript", "Firebase", "Slate.js", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/8439094/pexels-photo-8439094.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      liveLink: "#",
       category: "fullstack"
     },
     {
-      id: 5,
-      title: "Weather Dashboard",
-      date: "Dec 2023",
-      description: "Real-time weather app with geolocation and forecasts.",
-      techStack: ["React", "OpenWeather API", "Geolocation API", "TailwindCSS"],
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-      codeLink: "https://github.com/SharmaGSaroj",
-      liveLink: "#",
-      category: "frontend"
-    },
-    {
-      id: 6,
-      title: "Authentication API",
-      date: "Aug 2023",
-      description: "Secure auth API with JWT, OAuth, and role-based access control.",
-      techStack: ["Node.js", "Express", "MongoDB", "JWT", "OAuth2"],
-      image: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+      id: 4,
+      title: "ChatApp (Real-Time Messaging)",
+      date: "Feb 2023",
+      description: "Real-time chat app with Vue.js frontend, Node/Express backend, and Socket.io for instant messaging.",
+      techStack: ["Vue.js", "Node.js", "Express.js", "Socket.io", "Tailwind CSS"],
+      image: "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg",
       codeLink: "https://github.com/SharmaGSaroj",
       category: "backend"
     }
@@ -111,7 +88,7 @@ const Projects: React.FC = () => {
         }`}>
           <h2 className="text-4xl font-bold mb-4">Projects</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            A collection of my recent work that showcases my skills and expertise
+            A collection of my real-world work that showcases my development skills and impact.
           </p>
         </div>
 
