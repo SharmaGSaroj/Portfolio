@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 interface NavbarProps {
@@ -17,17 +17,11 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
@@ -88,15 +82,6 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
               >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-slate-900 bg-sky-400 hover:bg-yellow-400 px-4 py-2 rounded-lg transition-colors duration-300"
-              >
-                <Download size={16} />
-                <span>Resume</span>
-              </a>
             </div>
           </div>
           <div className="md:hidden flex items-center gap-4">
@@ -139,15 +124,6 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 w-full text-slate-900 bg-sky-400 hover:bg-yellow-400 px-3 py-2 rounded-md text-base transition-colors duration-300"
-            >
-              <Download size={16} />
-              <span>Resume</span>
-            </a>
           </div>
         </div>
       )}
