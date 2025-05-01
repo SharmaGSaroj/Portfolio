@@ -1,55 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
-
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(import.meta.env.FORM_SUBMISSION_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setSubmitMessage("Thank you for your message! I'll get back to you soon.");
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSubmitMessage("Oops! Something went wrong. Please try again later.");
-      }
-    } catch (error) {
-      setSubmitMessage("Error sending message. Please check your connection and try again.");
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(""), 5000);
-    }
-  };
-
+  const [state, handleSubmit] = useForm("mnndjrdp");
 
   return (
     <section 
@@ -68,7 +28,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          {/* Left Side Contact Information */}
+          {/* Left Side Contact Info */}
           <div className={`lg:w-2/5 transition-all duration-700 ${
             inView ? 'opacity-100' : 'opacity-0 translate-y-10'
           }`}>
@@ -116,9 +76,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium mb-1">Location</h4>
-                    <p className="text-slate-300">
-                      London, Ontario, Canada
-                    </p>
+                    <p className="text-slate-300">London, Ontario, Canada</p>
                   </div>
                 </div>
               </div>
@@ -166,9 +124,9 @@ const Contact: React.FC = () => {
             >
               <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
 
-              {submitMessage && (
+              {state.succeeded && (
                 <div className="bg-green-400/20 text-green-400 p-4 rounded-lg mb-6">
-                  {submitMessage}
+                  Thank you for your message! I'll get back to you soon.
                 </div>
               )}
 
@@ -181,8 +139,6 @@ const Contact: React.FC = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     className="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
                     placeholder="John Doe"
                     required
@@ -194,15 +150,14 @@ const Contact: React.FC = () => {
                     Your Email
                   </label>
                   <input
-                    type="email"
                     id="email"
+                    type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     className="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
                     placeholder="john@example.com"
                     required
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
 
                 <div>
@@ -212,21 +167,20 @@ const Contact: React.FC = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     rows={6}
                     className="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
                     placeholder="Your message here..."
                     required
                   />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={state.submitting}
                   className="flex items-center justify-center gap-2 w-full bg-sky-400 hover:bg-sky-500 text-slate-900 font-medium py-3 px-6 rounded-lg transition-colors disabled:opacity-70"
                 >
-                  {isSubmitting ? 'Sending...' : (
+                  {state.submitting ? 'Sending...' : (
                     <>
                       <Send size={18} />
                       <span>Send Message</span>
