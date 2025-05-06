@@ -61,6 +61,7 @@ Portfolio/
 
 ## 🛠 Installation & Development
 
+> **Note:** This project requires **Node.js v16.x** or higher. Ensure you have the correct version installed. You can use a version manager like [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions.
 ```bash
 # Clone the repository
 git clone https://github.com/SharmaGSaroj/Portfolio.git
