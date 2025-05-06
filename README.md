@@ -16,7 +16,7 @@ Welcome to my personal developer portfolio! I'm **Saroj Sharma G**, a Full-Stack
 
 ## 🎥 Demo Preview
 
-![Portfolio Preview](public/images/preview.png)
+![Screenshot of the portfolio homepage showcasing a clean, professional layout with navigation bar and featured projects](public/images/preview.png)
 <!-- Replace with actual GIF if available -->
 <!-- ![Portfolio GIF](public/images/demo.gif) -->
 
