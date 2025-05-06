@@ -103,7 +103,7 @@ const About: React.FC = () => {
               className="relative w-full max-w-[240px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[400px] aspect-square"
             >
               <img
-                src="/assets/image/about-me.png"
+                src="/images/about-me.png"
                 alt="Saroj Sharma G"
                 className="rounded-2xl shadow-2xl w-full h-full object-cover"
               />
