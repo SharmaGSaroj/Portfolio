@@ -70,14 +70,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 1 }}
           className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight"
         >
-          <span className="animate-pulse text-white drop-shadow-md">Hi, I'm</span>{' '}
-          <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 bg-clip-text animate-glow">
-            Saroj Sharma G
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-yellow-400 to-purple-500 text-transparent bg-clip-text animate-glow">
-            Full-Stack Developer
-          </span>
+          Saroj Sharma G (Saroj Sharma) | Full-Stack Developer
         </motion.h1>
 
         <motion.p
