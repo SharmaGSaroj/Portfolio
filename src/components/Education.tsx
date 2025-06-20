@@ -46,6 +46,67 @@ const Education: React.FC = () => {
           </p>
         </motion.div>
 
+        {/* PineLogic Experience */}
+        <motion.div
+          variants={fadeInUp}
+          className="transition-all duration-700 mb-10"
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+            backdropFilter: 'blur(6.5px)',
+            WebkitBackdropFilter: 'blur(6.5px)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            padding: '2rem',
+          }}
+        >
+          <div className="flex items-start gap-5">
+            <div className="bg-sky-400/20 p-3 rounded-full">
+              <Briefcase className="text-sky-400" size={36} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-1">Web Developer</h3>
+              <p className="text-sky-400 text-lg mb-4">PineLogic.ca</p>
+              <div className="flex items-center gap-2 text-slate-300 mb-2">
+                <Calendar size={18} />
+                <span>Apr 2025 – Present</span>
+              </div>
+              <div className="mt-4 space-y-3">
+                <div className="flex items-start gap-2">
+                  <Code className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">
+                    Built and deployed 10+ WordPress websites with custom themes and plugin features, optimized for SEO and accessibility.
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">
+                    Integrated Figma designs into pixel-perfect, mobile-first pages following WCAG 2.1 standards.
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">
+                    Boosted mobile engagement by 20% after leading a cross-site accessibility audit and refactor.
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">
+                    Managed Linux server environments, performing updates, SSL setup, and backups via Git and cron jobs.
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Layers className="text-yellow-400 mt-1" size={18} />
+                  <p className="text-slate-200">
+                    Collaborated with marketing and design teams to implement high-converting, user-centric interfaces.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* EventConnect Experience */}
         <motion.div
           variants={fadeInUp}
