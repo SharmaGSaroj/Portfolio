@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,7 +17,8 @@ const App: React.FC = () => {
   }, [darkMode]);
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <div className={`min-h-screen font-sans antialiased ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
